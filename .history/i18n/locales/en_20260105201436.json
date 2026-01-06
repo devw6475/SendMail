@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "features": "Features",
+    "pricing": "Pricing",
+    "contact": "Contact"
+  },
+  "footer": {
+    "about": "About",
+    "benefits": "Benefits",
+    "whyUs": "Why Choose Us",
+    "steps": "Getting Started",
+    "testimonials": "Testimonials",
+    "faq": "FAQ",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy",
+    "aboutUs": "About Us"
+  }
+}

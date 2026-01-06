@@ -1,0 +1,330 @@
+* {
+  font-family: "Inter", sans-serif !important;
+}
+
+:root {
+  --primary-blue: #0a2240;
+  --primary-orange: #ff7f14;
+  --light-gray: #f8f9fa;
+  --status-active: #28a745;
+  --status-pending: #ffc107;
+  --status-banned: #6c757d;
+  --status-canceled: #dc3545;
+  --primary-color: #FF5C00;
+  --primary-hover: #e65200;
+  --dark-blue: #14213D;
+  --light-orange: #FFE8D6;
+  --light-gray: #F8F9FA;
+  --text-dark: #212529;
+}
+
+.sidebar {
+  background-color: var(--primary-blue);
+  min-height: 100vh;
+  color: white;
+  position: fixed;
+  width: 250px;
+  z-index: 100;
+  transition: all 0.3s;
+}
+
+.sidebar a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-icon {
+  width: 24px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.main-content {
+  margin-left: 250px;
+  transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+  }
+
+  .sidebar .nav-text {
+    display: none;
+  }
+
+  .sidebar-icon {
+    margin-right: 0;
+  }
+
+  .main-content {
+    margin-left: 60px;
+  }
+}
+
+.header-section {
+  background-color: var(--primary-orange);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 0;
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.status-active {
+  background-color: rgba(40, 167, 69, 0.2);
+  color: var(--status-active);
+}
+
+.status-inactive {
+  background-color: gray;
+  color: white;
+}
+
+.status-blocked {
+  background-color: red;
+  color: white;
+}
+
+.status-pending {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: var(--status-pending);
+}
+
+.status-banned {
+  background-color: rgba(108, 117, 125, 0.2);
+  color: var(--status-banned);
+}
+
+.status-canceled {
+  background-color: rgba(220, 53, 69, 0.2);
+  color: var(--status-canceled);
+}
+
+.dashboard-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  transition: all 0.3s;
+}
+
+.dashboard-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn {
+  border-radius: 4px;
+  padding: 6px 15px;
+  transition: all 0.2s;
+}
+
+.star-rating {
+  color: gold;
+}
+
+.profile-image {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(10, 34, 64, 0.02);
+}
+
+.table th {
+  font-weight: 600;
+  color: var(--primary-blue);
+}
+
+.filter-dropdown .btn {
+  border-radius: 4px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  color: #333;
+}
+
+.approval-card {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.approval-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-perso {
+  background-color: rgba(40, 167, 69, 0.2) !important;
+  color: var(--status-active) !important;
+}
+
+.btn-perso-other {
+  background-color: rgba(40, 167, 70, 0.785) !important;
+  color: white !important;
+}
+
+.btn-perso-danger {
+  background-color: rgba(167, 40, 40, 0.2) !important;
+  color: var(--status-canceled) !important;
+}
+
+.btn-perso:hover {
+  box-shadow: 0px 0px 0px 1px var(--status-active) !important;
+}
+
+.btn-perso-secondary {
+  background-color: #0a2240 !important;
+  /* background-color: rgba(132, 131, 131, 0.804) !important; */
+  color: white !important;
+}
+
+.btn-perso-white {
+  background-color: white !important;
+  /* background-color: rgba(132, 131, 131, 0.804) !important; */
+  color: #0a2240 !important;
+}
+
+.btn-perso-danger-notif {
+  background-color: white;
+  color: red !important;
+}
+
+.btn-perso-success-notif {
+  background-color: white;
+  color: rgba(40, 167, 70, 0.785) !important;
+}
+
+.unlock-button:active {
+  transform: scale(1.5);
+  transition: transform 0.2s;
+}
+
+.unlock-button:active {
+  transform: scale(1.5);
+  transition: transform 0.2s;
+}
+
+.unlock-button-add:active {
+  transform: scale(1.2);
+  transition: transform 0.2s;
+}
+
+.register-button:active {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
+
+.register-button-other:active {
+  transform: scale(1.1);
+  transition: transform 0.2s;
+}
+
+.fix-icon {
+  position: relative;
+  top: -2px;
+}
+
+.bg-primary-orange {
+  background-color: var(--primary-color);
+}
+
+.bg-dark-blue {
+  background-color: var(--dark-blue);
+}
+
+.text-primary-orange {
+  color: var(--primary-color);
+}
+
+.btn-primary-orange {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary-orange:hover,
+.btn-primary-orange:focus {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  color: white;
+}
+
+.service-category {
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.service-category:hover {
+  transform: translateY(-5px);
+}
+
+.service-icon {
+  width: 80px;
+  height: 80px;
+  background-color: var(--light-orange);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+}
+
+.service-icon i {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.provider-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.provider-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.provider-image {
+  height: 200px;
+  object-fit: cover;
+}
+
+.rating {
+  color: #ffd700;
+}
+
+.hero-section {
+  padding: 3rem 0;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2rem 0;
+  }
+
+  .service-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .service-icon i {
+    font-size: 1.5rem;
+  }
+}
+
+.login-wrapper {
+  background-color: #1e2a38;
+}

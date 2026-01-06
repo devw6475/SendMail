@@ -4,9 +4,8 @@
 .nuxt
 .nitro
 .cache
-.history
 dist
-
+/.history
 
 # Node dependencies
 node_modules

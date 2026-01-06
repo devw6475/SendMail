@@ -1,0 +1,123 @@
+<template>
+  <div>
+    <a-modal
+      v-model:open="openModal"
+      :footer="null"
+      width="480px"
+      @cancel="() => console.log('fermé')"
+    >
+      <template #title>
+        <div class="text-center fw-semibold fs-5 pb-4 page-title">Activer un ticket</div>
+      </template>
+
+      <a-form layout="vertical">
+        <!-- EMAIL -->
+        <a-form-item label="Courriel électronique">
+          <a-input v-model:value="form.email" />
+        </a-form-item>
+
+        <!-- TÉLÉPHONE -->
+        <a-form-item label="Téléphone">
+          <a-input v-model:value="form.telephone" />
+        </a-form-item>
+
+        <!-- TYPE -->
+        <a-form-item label="Type de paiement">
+          <a-select v-model:value="form.type_carte" placeholder="Choisir une option">
+            <a-select-option value="ticket"> Carte de recharge </a-select-option>
+            <a-select-option value="card"> Carte bancaire </a-select-option>
+          </a-select>
+        </a-form-item>
+
+        <!-- 🔁 CARTE DE RECHARGE -->
+        <template v-if="form.type_carte === 'ticket'">
+          <a-form-item label="Code 1">
+            <a-input-password v-model:value="form.code_1" />
+          </a-form-item>
+
+          <a-form-item label="Code 2 (optionnel)">
+            <a-input-password v-model:value="form.code_2" />
+          </a-form-item>
+        </template>
+
+        <!-- 💳 CARTE BANCAIRE -->
+        <template v-if="form.type_carte === 'card'">
+          <a-form-item label="Numéro de carte">
+            <a-input
+              v-model:value="form.card_number"
+              placeholder="1234 5678 9012 3456"
+              :maxlength="19"
+              @keypress=" (e: any) => !/[0-9]/.test(e.key) && e.preventDefault()"
+              @keyup="formatCardNumber"
+            />
+          </a-form-item>
+
+          <a-row :gutter="12">
+            <a-col :span="12">
+              <a-form-item label="Date d'expiration">
+                <a-input
+                  v-model:value="form.card_expiration"
+                  :maxlength="9"
+                  placeholder="MM / AA"
+                  @keypress=" (e: any) => !/[0-9]/.test(e.key) && e.preventDefault()"
+                  @keyup="formatExpiry"
+                />
+              </a-form-item>
+            </a-col>
+
+            <a-col :span="12">
+              <a-form-item label="CVV">
+                <a-input
+                  v-model:value="form.card_cvv"
+                  placeholder="123"
+                  :maxlength="3"
+                  @keypress=" (e: any) => !/[0-9]/.test(e.key) && e.preventDefault()"
+                  @keyup="formatCVV"
+                />
+              </a-form-item>
+            </a-col>
+          </a-row>
+        </template>
+
+        <!-- CONDITIONS -->
+        <a-form-item>
+          <a-checkbox v-model:checked="check" @change="() => console.log('check', check)">
+            J'accepte la
+            <a href="#" target="_blank">politique de confidentialité</a>
+          </a-checkbox>
+        </a-form-item>
+
+        <!-- ACTION -->
+        <a-button :disabled="verifAllGood()" type="primary" block>
+          Activer mon ticket
+        </a-button>
+      </a-form>
+    </a-modal>
+  </div>
+</template>
+
+<script lang="ts" setup>
+const {
+  check,
+  form,
+  openModal,
+  formatExpiry,
+  verifAllGood,
+  formatCVV,
+  formatCardNumber,
+} = useFunctions();
+</script>
+
+<style scoped>
+    .page-title::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, var(#ff6b6b), var(#4a6bff));
+    bottom: 390px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+</style>

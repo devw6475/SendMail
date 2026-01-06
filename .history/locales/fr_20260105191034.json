@@ -1,0 +1,21 @@
+{
+    "nav": {
+      "home": "Accueil",
+      "services": "Services",
+      "features": "Fonctionnalités",
+      "pricing": "Tarifs",
+      "contact": "Contact"
+    },
+    "hero": {
+      "title": "Activez vos tickets de recharge en un clic",
+      "description": "Activate myCard vous permet d'activer instantanément vos tickets de recharge mobile avant utilisation.",
+      "activate": "Activer mon Ticket",
+      "refund": "Remboursement"
+    },
+    "footer": {
+      "description": "La solution la plus fiable pour activer vos tickets de recharge mobile avant utilisation.",
+      "links": "Liens rapides",
+      "legal": "Légal"
+    }
+  }
+  

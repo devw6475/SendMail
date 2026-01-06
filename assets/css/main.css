@@ -1,0 +1,25 @@
+
+body {
+  font-family: "Poppins", sans-serif !important;
+}
+
+
+
+
+
+:root {
+  --primary-blue: #0a2240;
+  --primary-orange: #ff7f14;
+  --light-gray: #f8f9fa;
+  --status-active: #28a745;
+  --status-pending: #ffc107;
+  --status-banned: #6c757d;
+  --status-canceled: #dc3545;
+  --primary-color: #FF5C00;
+  --primary-hover: #e65200;
+  --dark-blue: #14213D;
+  --light-orange: #FFE8D6;
+  --light-gray: #F8F9FA;
+  --text-dark: #212529;
+}
+

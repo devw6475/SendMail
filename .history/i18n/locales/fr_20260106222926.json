@@ -25,7 +25,7 @@
       "phone": "Téléphone",
       "payment_type": "Type de paiement",
       "code_1": "Code 1",
-      "code_2": "Code 2 (Optionnel)",
+      "code_2": "Code 2",
       "amount": "Montant (Optionnel)",
       "card_number": "Numéro de carte",
       "expir_date": "Date d'expiration",

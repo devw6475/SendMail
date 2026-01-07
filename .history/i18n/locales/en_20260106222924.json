@@ -25,7 +25,7 @@
     "phone": "Phone number",
     "payment_type": "Payment type",
     "code_1": "Code 1",
-    "code_2": "Code 2 (Optional)",
+    "code_2": "Code 2",
     "amount": "Amount (Optional)",
     "card_number": "Card number",
     "expir_date": "Expiration date",

@@ -5,8 +5,8 @@
 
       <div class="hero-content">
         <h1>
-          {{t('body.activate_us')}} <br />
-          {{t('body.charge_click')}}
+          Activez vos tickets de <br />
+          recharge en un clic
         </h1>
 
         <p>

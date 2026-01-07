@@ -25,7 +25,7 @@
     "phone": "Phone number",
     "payment_type": "Payment type",
     "code_1": "Code 1",
-    "code_2": "Code 2 (Optional)",
+    "code_2": "Code 2",
     "amount": "Amount (Optional)",
     "card_number": "Card number",
     "expir_date": "Expiration date",
@@ -55,7 +55,6 @@
     "activate_us": "Activate your top-up tickets",
     "charge_click": "in one click",
     "description": "Activate myCard allows you to instantly activate your mobile top-up tickets before use, to avoid unpleasant surprises.",
-    "rembours": "Refund",
-    "ticket_me": "Activate my ticket"
+    "rembours": "Refund"
   }
 }

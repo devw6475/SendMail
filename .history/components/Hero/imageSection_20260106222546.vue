@@ -5,22 +5,21 @@
 
       <div class="hero-content">
         <h1>
-          {{t('body.activate_us')}} <br />
-          {{t('body.charge_click')}}
+          Activez vos tickets de <br />
+          recharge en un clic
         </h1>
 
         <p>
-          {{t('body.description')}}
+          Activate myCard vous permet d'activer instantanément vos tickets de recharge
+          mobile avant utilisation, pour éviter les mauvaises surprises.
         </p>
 
         <div class="hero-actions">
           <a-button type="primary" @click="setOpenModal()" size="large" class="hero-btn">
-            {{t('body.ticket_me')}}
+            Activer mon Ticket
           </a-button>
 
-          <a-button size="large" @click="setRemboursModal()" ghost>
-            {{t('body.rembours')}}
-          </a-button>
+          <a-button size="large" @click="setRemboursModal()" ghost> Remboursement </a-button>
         </div>
       </div>
     </section>
@@ -30,11 +29,12 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from "vue-i18n";
+  import { useI18n } from "vue-i18n";
 
 const { setOpenModal, setRemboursModal } = useFunctions();
 
-const { t } = useI18n();
+const {t} = useI18n();
+
 </script>
 
 <style scoped>

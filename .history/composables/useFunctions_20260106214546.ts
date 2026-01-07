@@ -150,8 +150,6 @@ export const useFunctions = () => {
 
     } catch (error) {
       console.error("Erreur", error)
-      openModal.value = false
-      resetForm(form);
     }
   }
 

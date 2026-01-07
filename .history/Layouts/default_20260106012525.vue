@@ -6,7 +6,7 @@
         <div class="container">
           <!-- LOGO -->
           <NuxtLink class="navbar-brand fs-3 fw-bold logo-blue" to="/">
-            {{t('body.organization_name')}}
+            ServiConnec
           </NuxtLink>
 
           <!-- TOGGLER MOBILE -->

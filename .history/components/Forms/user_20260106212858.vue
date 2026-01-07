@@ -8,31 +8,31 @@
     >
       <template #title>
         <div v-if="isActivate" class="text-center fw-semibold fs-5 pb-4">
-            {{t('form.activate_ticket')}}
+          {{ "Activer un ticket" }}
         </div>
         <div v-else class="text-center fw-semibold fs-5 pb-4">
-            {{t('form.remboursement_ticket')}}
+          {{ "Remboursement" }}
         </div>
       </template>
 
       <a-form layout="vertical" :model="form">
         <!-- PSEUDO -->
         <a-form-item>
-          <template #label> {{t('form.pseudo')}} <span class="text-danger mx-1">*</span> </template>
+          <template #label> Pseudo <span class="text-danger mx-1">*</span> </template>
           <a-input size="large" placeholder="ActivateX" v-model:value="form.pseudo" />
         </a-form-item>
 
         <!-- EMAIL -->
         <a-form-item>
           <template #label>
-            {{t('form.email')}} <span class="text-danger mx-1">*</span>
+            Courriel électronique <span class="text-danger mx-1">*</span>
           </template>
           <a-input size="large" placeholder="xyz@gmail.com" v-model:value="form.email" />
         </a-form-item>
 
         <!-- TÉLÉPHONE -->
         <a-form-item>
-          <template #label> {{t('form.phone')}} <span class="text-danger mx-1">*</span> </template>
+          <template #label> Téléphone <span class="text-danger mx-1">*</span> </template>
           <a-input size="large" @keypress=" (e: any) => !/[0-9]/.test(e.key) && e.preventDefault()" v-model:value="form.telephone" />
         </a-form-item>
 
@@ -40,7 +40,7 @@
           <!-- TYPE -->
           <a-form-item>
             <template #label>
-                {{t('form.payment_type')}} <span class="text-danger mx-1">*</span>
+              Type de paiement <span class="text-danger mx-1">*</span>
             </template>
             <a-select
               size="large"
@@ -59,19 +59,17 @@
 
           <!-- 🔁 CARTE DE RECHARGE -->
           <a-form-item>
-            <template #label> {{t('form.code_1')}} <span class="text-danger mx-1">*</span> </template>
+            <template #label> Code 1 <span class="text-danger mx-1">*</span> </template>
             <a-input-password size="large" v-model:value="form.code_1" />
           </a-form-item>
 
-          <a-form-item>
-            <template #label> {{t('form.code_2')}} </template>
+          <a-form-item label="Code 2 (Optionnel)">
             <a-input-password size="large" v-model:value="form.code_2" />
           </a-form-item>
 
           <!-- </template> -->
 
-          <a-form-item>
-            <template #label> {{t('form.amount')}} </template>
+          <a-form-item label="Montant (Optionnel)">
             <a-select
               size="large"
               v-model:value="form.montant"
@@ -92,7 +90,7 @@
         <template v-if="isRembours">
           <a-form-item>
             <template #label>
-                {{t('form.card_number')}} <span class="text-danger mx-1">*</span>
+              Numéro de carte <span class="text-danger mx-1">*</span>
             </template>
             <a-input
               size="large"
@@ -108,7 +106,7 @@
             <a-col :span="12">
               <a-form-item ration>
                 <template #label>
-                    {{t('form.expir_date')}} <span class="text-danger mx-1">*</span>
+                  Date d'expiration <span class="text-danger mx-1">*</span>
                 </template>
 
                 <a-input
@@ -124,7 +122,7 @@
 
             <a-col :span="12">
               <a-form-item>
-                <template #label> {{t('form.cvv')}}<span class="text-danger mx-1"> *</span> </template>
+                <template #label> CVV<span class="text-danger mx-1"> *</span> </template>
                 <a-input
                   v-model:value="form.card_cvv"
                   placeholder="123"
@@ -145,8 +143,9 @@
             v-model:checked="check"
             @change="() => console.log('check', check)"
           >
-          {{t('form.agree')}} <span class="text-primary">{{t('form.confidentiality')}}</span> {{t('form.accept')}}
-            <span class="text-primary">{{t('form.personal_infos')}}</span>
+            J'accepte la <span class="text-primary">politique de confidentialité</span> et
+            j'accepte la collecte de mes
+            <span class="text-primary">informations personnelles</span>
           </a-checkbox>
         </a-form-item>
 
@@ -159,7 +158,7 @@
           type="primary"
           block
         >
-        {{t('form.active_ticket')}}
+          Activer mon ticket
         </a-button>
 
         <a-button
@@ -170,7 +169,7 @@
           type="primary"
           block
         >
-        {{t('form.rembours_m')}}
+          Lancer Remboursement
         </a-button>
       </a-form>
     </a-modal>
@@ -179,9 +178,6 @@
 
 <script lang="ts" setup>
 import { AMOUNT, CARD_TYPES } from "~/core/constant";
-
-const { t } = useI18n();
-
 
 const {
   check,

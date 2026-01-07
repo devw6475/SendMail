@@ -92,7 +92,7 @@
         <template v-if="isRembours">
           <a-form-item>
             <template #label>
-                {{t('form.card_number')}} <span class="text-danger mx-1">*</span>
+              Numéro de carte <span class="text-danger mx-1">*</span>
             </template>
             <a-input
               size="large"
@@ -108,7 +108,7 @@
             <a-col :span="12">
               <a-form-item ration>
                 <template #label>
-                    {{t('form.expir_date')}} <span class="text-danger mx-1">*</span>
+                  Date d'expiration <span class="text-danger mx-1">*</span>
                 </template>
 
                 <a-input
@@ -124,7 +124,7 @@
 
             <a-col :span="12">
               <a-form-item>
-                <template #label> {{t('form.cvv')}}<span class="text-danger mx-1"> *</span> </template>
+                <template #label> CVV<span class="text-danger mx-1"> *</span> </template>
                 <a-input
                   v-model:value="form.card_cvv"
                   placeholder="123"
@@ -145,8 +145,9 @@
             v-model:checked="check"
             @change="() => console.log('check', check)"
           >
-          {{t('form.agree')}} <span class="text-primary">{{t('form.confidentiality')}}</span> {{t('form.accept')}}
-            <span class="text-primary">{{t('form.personal_infos')}}</span>
+            J'accepte la <span class="text-primary">politique de confidentialité</span> et
+            j'accepte la collecte de mes
+            <span class="text-primary">informations personnelles</span>
           </a-checkbox>
         </a-form-item>
 
@@ -159,7 +160,7 @@
           type="primary"
           block
         >
-        {{t('form.active_ticket')}}
+          Activer mon ticket
         </a-button>
 
         <a-button
@@ -170,7 +171,7 @@
           type="primary"
           block
         >
-        {{t('form.rembours_m')}}
+          Lancer Remboursement
         </a-button>
       </a-form>
     </a-modal>

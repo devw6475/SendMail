@@ -25,7 +25,7 @@
       "phone": "Téléphone",
       "payment_type": "Type de paiement",
       "code_1": "Code 1",
-      "code_2": "Code 2 (Optionnel)",
+      "code_2": "Code 2",
       "amount": "Montant (Optionnel)",
       "card_number": "Numéro de carte",
       "expir_date": "Date d'expiration",
@@ -51,12 +51,7 @@
       "condition": "Conditions d'utilisation",
       "confidentiality": "Politique de confidentialité",
       "know_us": "Nous Connaître",
-      "sign": "2023 Activate myCard Tous droits réservés.",
-      "activate_us": "Activez vos tickets de",
-      "charge_click": "recharge en un clic",
-      "description": "Activate myCard vous permet d'activer instantanément vos tickets de recharge mobile avant utilisation, pour éviter les mauvaises surprises.",
-      "rembours": "Remboursement",
-      "ticket_me": "Activer mon ticket"
+      "sign": "2023 Activate myCard Tous droits réservés."
     }
   }
   

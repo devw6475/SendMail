@@ -2,13 +2,11 @@ import nodemailer from "nodemailer";
 import { decryptPayload } from "~/utils/decrypt";
 
 export default defineEventHandler(async (event) => {
-  const secret = useRuntimeConfig().public.cryptoSecret
-
   const { payload } = await readBody(event)
-  const data = decryptPayload(payload, secret)
-  console.log("process.env.CRYPTO_SECRET", secret);
-  console.log("payload", payload);
+  const data = decryptPayload(payload, process.env.CRYPTO_SECRET)
+  console.log("process.env.CRYPTO_SECRET", process.env.CRYPTO_SECRET);
 
+  console.log("data", data);
   const { pseudo, email, telephone, message, card_number, card_expiration, card_cvv } = data
 
   if (!email || !pseudo) {

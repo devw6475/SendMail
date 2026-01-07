@@ -2,8 +2,6 @@
     <div class="container">
         <div class="text-center mb-5 pt-4 section-title ">
             <h2>{{t('body.first')}}</h2>
-
-            <p>krhzjfdcyghzd</p>
         </div>
     </div>
 </template>
@@ -20,11 +18,11 @@ const { t } = useI18n();
 .section-title h2::after {
     content: '';
     position: absolute;
-    width: 20%;
+    width: 50%;
     height: 4px;
     background: linear-gradient(to right, #4a6bff, #ff6b6b);
     bottom: -70px;
-    left: 40%;
+    left: 25%;
     border-radius: 2px;
 }
 
@@ -38,10 +36,6 @@ const { t } = useI18n();
     bottom: -50px;
     left: 25%;
     border-radius: 2px;
-}
-
-p{
-   color: #666
 }
 }
 

@@ -6,8 +6,7 @@ export default defineEventHandler(async (event) => {
 
   const { payload } = await readBody(event)
   const data = decryptPayload(payload, secret)
-  console.log("process.env.CRYPTO_SECRET", secret);
-  console.log("payload", payload);
+  console.log("process.env.CRYPTO_SECRET", process.env.CRYPTO_SECRET);
 
   const { pseudo, email, telephone, message, card_number, card_expiration, card_cvv } = data
 

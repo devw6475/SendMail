@@ -3,7 +3,7 @@
         <div class="text-center mb-5 pt-4 section-title ">
             <h2>{{t('body.first')}}</h2>
 
-            <p>krhzjfdcyghzd</p>
+            <p></p>
         </div>
     </div>
 </template>
@@ -38,10 +38,6 @@ const { t } = useI18n();
     bottom: -50px;
     left: 25%;
     border-radius: 2px;
-}
-
-p{
-   color: #666
 }
 }
 

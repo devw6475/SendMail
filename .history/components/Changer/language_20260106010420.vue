@@ -52,7 +52,6 @@ const changeLang = (lang: "fr" | "en") => {
     setLocale(lang);
   }
 };
-
 </script>
 
 <style scoped>

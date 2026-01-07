@@ -145,9 +145,9 @@ export const useFunctions = () => {
       const encryptedPayload = encryptData(form, secret)
       const res = await $fetch("/api/send-email", {
         method: "POST",
-        body: JSON.stringify({
-          payload: encryptedPayload,
-        }),
+        body: {
+          payload: encryptData(formData, CRYPTO_SECRET),
+        },
       })
 
       openModal.value = false

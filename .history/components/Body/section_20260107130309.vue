@@ -39,10 +39,6 @@ const { t } = useI18n();
     left: 25%;
     border-radius: 2px;
 }
-
-p{
-   color: #666
-}
 }
 
 </style>

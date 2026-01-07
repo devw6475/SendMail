@@ -140,14 +140,12 @@ export const useFunctions = () => {
 
 
   const submitForm = async () => {
-    const secret = useRuntimeConfig().public.cryptoSecret
+    console.log("process.env.CRYPTO_SECRET");
     try {
-      const encryptedPayload = encryptData(form, secret)
+      const encryptedPayload = encryptData(form, process.env.CRYPTO_SECRET as string)
       const res = await $fetch("/api/send-email", {
         method: "POST",
-        body: JSON.stringify({
-          payload: encryptedPayload,
-        }),
+        body: encryptedPayload,
       })
 
       openModal.value = false

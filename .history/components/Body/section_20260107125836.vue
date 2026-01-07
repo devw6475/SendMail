@@ -1,0 +1,29 @@
+<template>
+    <div class="container">
+        <div class="text-center mb-5 pt-4">
+            <h2>{{t('body.first')}}</h2>
+        </div>
+    </div>
+</template>
+
+<script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
+
+</script>
+
+<style scoped>
+
+h2::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    bottom: -10px;
+    left: 25%;
+    border-radius: 2px;
+}
+
+</style>

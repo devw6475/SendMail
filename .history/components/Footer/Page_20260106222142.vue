@@ -4,36 +4,36 @@
   <div class="container">
     <div class="footer-content">
       <div class="footer-column">
-        <h3>{{t('body.organization_name')}}</h3>
+        <h3>Activate myCard</h3>
         <p>
-          {{t('body.solution')}}
+          La solution la plus fiable pour activer vos tickets de recharge mobile avant utilisation.
         </p>
       </div>
 
       <div class="footer-column">
-        <h3>{{t('body.links')}}</h3>
+        <h3>Liens rapides</h3>
         <ul class="footer-links">
-          <li><a href="#">{{t('body.first')}}</a></li>
-          <li><a href="#">{{t('body.advantage')}}</a></li>
-          <li><a href="#">{{t('body.how_choice')}}</a></li>
-          <li><a href="#">{{t('body.first_step')}}</a></li>
-          <li><a href="#">{{t('body.avis')}}</a></li>
-          <li><a href="#">{{t('body.faq')}}</a></li>
+          <li><a href="#">Présentation</a></li>
+          <li><a href="#">Avantages</a></li>
+          <li><a href="#">Pourquoi nous choisir</a></li>
+          <li><a href="#">Mes premiers pas</a></li>
+          <li><a href="#">Avis Internautes</a></li>
+          <li><a href="#">FAQ</a></li>
         </ul>
       </div>
 
       <div class="footer-column">
-        <h3>{{t('body.legal')}}</h3>
+        <h3>Légal</h3>
         <ul class="footer-links">
-          <li><a href="#">{{t('body.condition')}}</a></li>
-          <li><a href="#">{{t('body.confidentiality')}}</a></li>
-          <li><a href="#">{{t('body.know_us')}}</a></li>
+          <li><a href="#">Conditions d'utilisation</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="#">Nous Connaître</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>© {{t('body.sign')}}</p>
+      <p>© 2023 Ezechiel Card. Tous droits réservés.</p>
     </div>
   </div>
 </footer>
@@ -42,9 +42,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from "vue-i18n";
-
-const { t } = useI18n();
 
 </script>
 

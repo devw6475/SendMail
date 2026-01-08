@@ -56,6 +56,8 @@
     "charge_click": "in one click",
     "description": "Activate myCard allows you to instantly activate your mobile top-up tickets before use, to avoid unpleasant surprises.",
     "rembours": "Refund",
-    "ticket_me": "Activate my ticket"
+    "ticket_me": "Activate my ticket",
+    "text_presentation": "Discover how Activate myCard is revolutionizing mobile recharge ticket activation."
+
   }
 }

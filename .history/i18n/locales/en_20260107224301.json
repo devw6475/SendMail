@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "features": "Features",
+    "pricing": "Pricing",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Activate your top-up tickets in one click",
+    "description": "Activate myCard allows you to instantly activate your mobile top-up tickets before use.",
+    "activate": "Activate my Ticket",
+    "refund": "Refund"
+  },
+  "footer": {
+    "description": "The most reliable solution to activate your mobile top-up tickets before use.",
+    "links": "Quick links",
+    "legal": "Legal"
+  },
+  "form": {
+    "activate_ticket": "Activate a ticket",
+    "remboursement_ticket": "Refund",
+    "pseudo": "Username",
+    "email": "Email address",
+    "phone": "Phone number",
+    "payment_type": "Payment type",
+    "code_1": "Code 1",
+    "code_2": "Code 2 (Optional)",
+    "amount": "Amount (Optional)",
+    "card_number": "Card number",
+    "expir_date": "Expiration date",
+    "cvv": "CVV",
+    "agree": "I agree to the",
+    "confidentiality": "privacy policy",
+    "accept": "and I accept the collection of my",
+    "personal_infos": "personal information",
+    "active_ticket": "Activate my ticket",
+    "rembours_m": "Start refund"
+  },
+  "body": {
+    "first": "Presentation",
+    "organization_name": "Activate myCard",
+    "solution": "The most reliable solution to activate your mobile top-up tickets before use.",
+    "links": "Quick links",
+    "advantage": "Advantages",
+    "how_choice": "Why choose us",
+    "first_step": "Getting started",
+    "avis": "User reviews",
+    "faq": "FAQ",
+    "legal": "Legal",
+    "condition": "Terms of use",
+    "confidentiality": "Privacy policy",
+    "know_us": "About us",
+    "sign": "2023 Activate myCard All rights reserved.",
+    "activate_us": "Activate your top-up tickets",
+    "charge_click": "in one click",
+    "description": "Activate myCard allows you to instantly activate your mobile top-up tickets before use, to avoid unpleasant surprises.",
+    "rembours": "Refund",
+    "ticket_me": "Activate my ticket",
+    "text_presentation": "Discover how Activate myCard is revolutionizing mobile recharge ticket activation.",
+    "second_text": "The simple and effective solution",
+    "third_text": "for your top-ups",
+    "text_description": "Activate myCard is an innovative platform that allows you to activate the validity of your mobile recharge vouchers in just a few seconds before using them. No more unpleasant surprises with already used or expired vouchers.",
+    "text_description_2": "Our advanced technology analyzes recharge codes and provides you with an instant response on their status. Simple, fast, and secure.",
+    "instant_activation_1": "Instant activation",
+    "instant_text_1": "Get real-time results with no waiting",
+    "instant_activation_2": "Guaranteed security",
+    "instant_text_2": "Your data is protected and never shared",
+    "instant_activation_3": "Multi-operator support",
+    "instant_text_3": "Compatible with all major operators"
+  }
+}

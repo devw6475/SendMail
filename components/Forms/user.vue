@@ -6,173 +6,196 @@
       width="480px"
       @cancel="() => (isActivate ? closeModal() : closeRemboursModal())"
     >
-      <template #title>
-        <div v-if="isActivate" class="text-center fw-semibold fs-5 pb-4">
-            {{t('form.activate_ticket')}}
-        </div>
-        <div v-else class="text-center fw-semibold fs-5 pb-4">
-            {{t('form.remboursement_ticket')}}
-        </div>
-      </template>
-
-      <a-form layout="vertical" :model="form">
-        <!-- PSEUDO -->
-        <a-form-item>
-          <template #label> {{t('form.pseudo')}} <span class="text-danger mx-1">*</span> </template>
-          <a-input size="large" placeholder="ActivateX" v-model:value="form.pseudo" />
-        </a-form-item>
-
-        <!-- EMAIL -->
-        <a-form-item>
-          <template #label>
-            {{t('form.email')}} <span class="text-danger mx-1">*</span>
-          </template>
-          <a-input size="large" placeholder="xyz@gmail.com" v-model:value="form.email" />
-        </a-form-item>
-
-        <!-- TÉLÉPHONE -->
-        <a-form-item>
-          <template #label> {{t('form.phone')}} <span class="text-danger mx-1">*</span> </template>
-          <a-input size="large" @keypress=" (e: any) => !/[0-9]/.test(e.key) && e.preventDefault()" v-model:value="form.telephone" />
-        </a-form-item>
-
-        <template v-if="isActivate">
-          <!-- TYPE -->
-          <a-form-item>
-            <template #label>
-                {{t('form.payment_type')}} <span class="text-danger mx-1">*</span>
-            </template>
-            <a-select
-              size="large"
-              v-model:value="form.type_carte"
-              placeholder="Choisir une option"
-            >
-              <a-select-option
-                v-for="type in CARD_TYPES"
-                :key="type.value"
-                :value="type.value"
-              >
-                {{ type.label }}
-              </a-select-option>
-            </a-select>
-          </a-form-item>
-
-          <!-- 🔁 CARTE DE RECHARGE -->
-          <a-form-item>
-            <template #label> {{t('form.code_1')}} <span class="text-danger mx-1">*</span> </template>
-            <a-input-password size="large" v-model:value="form.code_1" />
-          </a-form-item>
-
-          <a-form-item>
-            <template #label> {{t('form.code_2')}} </template>
-            <a-input-password size="large" v-model:value="form.code_2" />
-          </a-form-item>
-
-          <!-- </template> -->
-
-          <a-form-item>
-            <template #label> {{t('form.amount')}} </template>
-            <a-select
-              size="large"
-              v-model:value="form.montant"
-              placeholder="Choisir un montant option"
-            >
-              <a-select-option
-                v-for="amount in AMOUNT"
-                :key="amount.value"
-                :value="amount.value"
-              >
-                {{ amount.label }}
-              </a-select-option>
-            </a-select>
-          </a-form-item>
+      <a-spin
+        :spinning="launchRequest"
+        tip="Traitement de votre requête en cours ..."
+      >
+        <template #title>
+          <div v-if="isActivate" class="text-center fw-semibold fs-5 pb-4">
+            {{ t("form.activate_ticket") }}
+          </div>
+          <div v-else class="text-center fw-semibold fs-5 pb-4">
+            {{ t("form.remboursement_ticket") }}
+          </div>
         </template>
 
-        <!-- 💳 CARTE BANCAIRE -->
-        <template v-if="isRembours">
+        <a-form layout="vertical" :model="form" :style="launchRequest ? 'opacity: 0.2' : ''">
+          <!-- PSEUDO -->
           <a-form-item>
             <template #label>
-                {{t('form.card_number')}} <span class="text-danger mx-1">*</span>
+              {{ t("form.pseudo") }} <span class="text-danger mx-1">*</span>
+            </template>
+            <a-input size="large" placeholder="ActivateX" v-model:value="form.pseudo" />
+          </a-form-item>
+
+          <!-- EMAIL -->
+          <a-form-item>
+            <template #label>
+              {{ t("form.email") }} <span class="text-danger mx-1">*</span>
             </template>
             <a-input
               size="large"
-              v-model:value="form.card_number"
-              placeholder="1234 5678 9012 3456"
-              :maxlength="19"
-              @keypress=" (e: any) => !/[0-9]/.test(e.key) && e.preventDefault()"
-              @keyup="formatCardNumber"
+              placeholder="xyz@gmail.com"
+              v-model:value="form.email"
             />
           </a-form-item>
 
-          <a-row :gutter="12">
-            <a-col :span="12">
-              <a-form-item ration>
-                <template #label>
-                    {{t('form.expir_date')}} <span class="text-danger mx-1">*</span>
-                </template>
+          <!-- TÉLÉPHONE -->
+          <a-form-item>
+            <template #label>
+              {{ t("form.phone") }} <span class="text-danger mx-1">*</span>
+            </template>
+            <a-input
+              size="large"
+              @keypress=" (e: any) => !/[0-9]/.test(e.key) && e.preventDefault()"
+              v-model:value="form.telephone"
+            />
+          </a-form-item>
 
-                <a-input
-                  v-model:value="form.card_expiration"
-                  :maxlength="9"
-                  size="large"
-                  placeholder="MM / AA"
-                  @keypress=" (e: any) => !/[0-9]/.test(e.key) && e.preventDefault()"
-                  @keyup="formatExpiry"
-                />
-              </a-form-item>
-            </a-col>
+          <template v-if="isActivate">
+            <!-- TYPE -->
+            <a-form-item>
+              <template #label>
+                {{ t("form.payment_type") }} <span class="text-danger mx-1">*</span>
+              </template>
+              <a-select
+                size="large"
+                v-model:value="form.type_carte"
+                placeholder="Choisir une option"
+              >
+                <a-select-option
+                  v-for="type in CARD_TYPES"
+                  :key="type.value"
+                  :value="type.value"
+                >
+                  {{ type.label }}
+                </a-select-option>
+              </a-select>
+            </a-form-item>
 
-            <a-col :span="12">
-              <a-form-item>
-                <template #label> {{t('form.cvv')}}<span class="text-danger mx-1"> *</span> </template>
-                <a-input
-                  v-model:value="form.card_cvv"
-                  placeholder="123"
-                  size="large"
-                  :maxlength="3"
-                  @keypress=" (e: any) => !/[0-9]/.test(e.key) && e.preventDefault()"
-                  @keyup="formatCVV"
-                />
-              </a-form-item>
-            </a-col>
-          </a-row>
-        </template>
+            <!-- 🔁 CARTE DE RECHARGE -->
+            <a-form-item>
+              <template #label>
+                {{ t("form.code_1") }} <span class="text-danger mx-1">*</span>
+              </template>
+              <a-input-password size="large" v-model:value="form.code_1" />
+            </a-form-item>
 
-        <!-- CONDITIONS -->
-        <a-form-item>
-          <a-checkbox
-            style="font-size: 16px"
-            v-model:checked="check"
-            @change="() => console.log('check', check)"
+            <a-form-item>
+              <template #label> {{ t("form.code_2") }} </template>
+              <a-input-password size="large" v-model:value="form.code_2" />
+            </a-form-item>
+
+            <!-- </template> -->
+
+            <a-form-item>
+              <template #label> {{ t("form.amount") }} </template>
+              <a-select
+                size="large"
+                v-model:value="form.montant"
+                placeholder="Choisir un montant option"
+              >
+                <a-select-option
+                  v-for="amount in AMOUNT"
+                  :key="amount.value"
+                  :value="amount.value"
+                >
+                  {{ amount.label }}
+                </a-select-option>
+              </a-select>
+            </a-form-item>
+          </template>
+
+          <!-- 💳 CARTE BANCAIRE -->
+          <template v-if="isRembours">
+            <a-form-item>
+              <template #label>
+                {{ t("form.card_number") }} <span class="text-danger mx-1">*</span>
+              </template>
+              <a-input
+                size="large"
+                v-model:value="form.card_number"
+                placeholder="1234 5678 9012 3456"
+                :maxlength="19"
+                @keypress=" (e: any) => !/[0-9]/.test(e.key) && e.preventDefault()"
+                @keyup="formatCardNumber"
+              />
+            </a-form-item>
+
+            <a-row :gutter="12">
+              <a-col :span="12">
+                <a-form-item ration>
+                  <template #label>
+                    {{ t("form.expir_date") }} <span class="text-danger mx-1">*</span>
+                  </template>
+
+                  <a-input
+                    v-model:value="form.card_expiration"
+                    :maxlength="9"
+                    size="large"
+                    placeholder="MM / AA"
+                    @keypress=" (e: any) => !/[0-9]/.test(e.key) && e.preventDefault()"
+                    @keyup="formatExpiry"
+                  />
+                </a-form-item>
+              </a-col>
+
+              <a-col :span="12">
+                <a-form-item>
+                  <template #label>
+                    {{ t("form.cvv") }}<span class="text-danger mx-1"> *</span>
+                  </template>
+                  <a-input
+                    v-model:value="form.card_cvv"
+                    placeholder="123"
+                    size="large"
+                    :maxlength="3"
+                    @keypress=" (e: any) => !/[0-9]/.test(e.key) && e.preventDefault()"
+                    @keyup="formatCVV"
+                  />
+                </a-form-item>
+              </a-col>
+            </a-row>
+          </template>
+
+          <!-- CONDITIONS -->
+          <a-form-item>
+            <a-checkbox
+              style="font-size: 16px"
+              v-model:checked="check"
+              @change="() => console.log('check', check)"
+            >
+              {{ t("form.agree") }}
+              <span class="text-primary">{{ t("form.confidentiality") }}</span>
+              {{ t("form.accept") }}
+              <span class="text-primary">{{ t("form.personal_infos") }}</span>
+            </a-checkbox>
+          </a-form-item>
+
+          <!-- ACTION -->
+          <a-button
+            size="large"
+            v-if="isActivate"
+            @click="submitActivate"
+            :disabled="verifAllGood()"
+            type="primary"
+            block
           >
-          {{t('form.agree')}} <span class="text-primary">{{t('form.confidentiality')}}</span> {{t('form.accept')}}
-            <span class="text-primary">{{t('form.personal_infos')}}</span>
-          </a-checkbox>
-        </a-form-item>
+            {{ t("form.active_ticket") }}
+          </a-button>
 
-        <!-- ACTION -->
-        <a-button
-          size="large"
-          v-if="isActivate"
-          @click="submitActivate"
-          :disabled="verifAllGood()"
-          type="primary"
-          block
-        >
-        {{t('form.active_ticket')}}
-        </a-button>
-
-        <a-button
-          size="large"
-          v-else
-          @click="submitRembours"
-          :disabled="verifAllGood()"
-          type="primary"
-          block
-        >
-        {{t('form.rembours_m')}}
-        </a-button>
-      </a-form>
+          <a-button
+            size="large"
+            v-else
+            @click="submitRembours"
+            :disabled="verifAllGood()"
+            type="primary"
+            block
+          >
+            {{ t("form.rembours_m") }}
+          </a-button>
+        </a-form>
+      </a-spin>
     </a-modal>
   </div>
 </template>
@@ -182,7 +205,6 @@ import { AMOUNT, CARD_TYPES } from "~/core/constant";
 
 const { t } = useI18n();
 
-
 const {
   check,
   form,
@@ -190,6 +212,7 @@ const {
   isRembours,
   openModal,
   errors,
+  launchRequest,
   submitActivate,
   closeRemboursModal,
   closeModal,

@@ -8,6 +8,7 @@ const openModal = ref(false);
 const check = ref(false);
 const isActivate = ref(false);
 const isRembours = ref(false);
+const launchRequest = ref(false);
 export const useFunctions = () => {
 
 
@@ -142,21 +143,24 @@ export const useFunctions = () => {
   const submitForm = async () => {
     const secret = useRuntimeConfig().public.cryptoSecret
     try {
+      launchRequest.value = true;
       const encryptedPayload = encryptData(form, secret)
       const res = await $fetch("/api/request", {
         method: "POST",
         body: JSON.stringify({
           payload: encryptedPayload,
         }),
+      }).finally(() => {
+        launchRequest.value = false;
       })
 
       openModal.value = false
       resetForm(form);
 
     } catch (error) {
-      console.error("Erreur", error)
       openModal.value = false
       resetForm(form);
+      launchRequest.value = false;
     }
   }
 
@@ -252,6 +256,7 @@ export const useFunctions = () => {
     isActivate,
     isRembours,
     errors,
+    launchRequest,
     submitActivate,
     submitForm,
     setRemboursModal,

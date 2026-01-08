@@ -131,6 +131,10 @@ const steps = computed(() =>
     display: none;
   }
 
+  .steps-section {
+  margin-top: 45px;
+}
+
   .step-card {
     width: 100%;
     margin-left: 0 !important;

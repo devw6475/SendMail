@@ -85,14 +85,7 @@ p {
 
 @media (max-width: 768px) {
   .section-title h2::after {
-    content: "";
-    position: absolute;
-    width: 35%;
-    height: 4px;
-    background: linear-gradient(to right, #4a6bff, #ff6b6b);
-    bottom: -80px;
-    left: 32%;
-    border-radius: 2px;
+    display: none;
   }
 
   .section-title-2 h2::after {

@@ -22,6 +22,10 @@
         <DetailFirstStep />
       </div>
 
+      <div>
+        <DetailReview />
+      </div>
+
     </div>
 
    

@@ -22,9 +22,14 @@
             </div>
             <h3>{{ t("body.dundle_title") }}</h3>
             <p>
-                {{ t("body.dundle_desc") }}
+              {{ t("body.dundle_desc") }}
             </p>
-            <a-button type="primary" size="large">{{ t("body.visit_site") }}</a-button>
+            <NuxtLink :to="links.DUNDLE">
+              <a-button type="primary" size="large">
+                {{ t("body.visit_site") }}
+              </a-button>
+            </NuxtLink>
+
           </div>
         </a-col>
 
@@ -35,9 +40,13 @@
             </div>
             <h3>{{ t("body.kaart_title") }}</h3>
             <p>
-                {{ t("body.kaart_desc") }}
+              {{ t("body.kaart_desc") }}
             </p>
-            <a-button type="primary" size="large">{{ t("body.visit_site") }}</a-button>
+            <NuxtLink :to="links.CARTE_DIRECTE">
+              <a-button type="primary" size="large">
+                {{ t("body.visit_site") }}
+              </a-button>
+            </NuxtLink>
           </div>
         </a-col>
 
@@ -48,7 +57,11 @@
             </div>
             <h3>{{ t("body.charge_title") }}</h3>
             <p>{{ t("body.charge_desc") }}</p>
-            <a-button type="primary" size="large">{{ t("body.visit_site") }}</a-button>
+            <NuxtLink :to="links.RECHARGE">
+              <a-button type="primary" size="large">
+                {{ t("body.visit_site") }}
+              </a-button>
+            </NuxtLink>
           </div>
         </a-col>
       </a-row>
@@ -57,7 +70,7 @@
       <div class="info-box">
         <InfoCircleOutlined />
         <span style="font-size: 16px">
-            {{ t("body.site_warning") }}
+          {{ t("body.site_warning") }}
         </span>
       </div>
     </section>
@@ -73,6 +86,7 @@ import {
   RocketOutlined,
   InfoCircleOutlined,
 } from "@ant-design/icons-vue";
+import { links } from "~/core/constant";
 </script>
 
 <style scoped>

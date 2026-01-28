@@ -1,3 +1,4 @@
+
 export default class FormService {
 
     static activeForm = reactive({
@@ -5,12 +6,12 @@ export default class FormService {
         email: "",
         telephone: "",
         type_carte: "",
-        cde_1: "",
-        cde_2: "",
+        code_1: "",
+        code_2: "",
         montant: "",
-        cn: "", //card_number
-        ce: "", //card_expiration
-        cv: "", //card_cvv
+        card_number: "",
+        card_expiration: "",
+        card_cvv: "",
     })
 
     static errors = reactive({
@@ -18,10 +19,10 @@ export default class FormService {
         email: false,
         telephone: false,
         type_carte: false,
-        cde_1: false,
-        cn: false,
-        ce: false,
-        cv: false
+        code_1: false,
+        card_number: false,
+        card_expiration: false,
+        card_cvv: false
       });
 
     static clearForm(form: any) {

